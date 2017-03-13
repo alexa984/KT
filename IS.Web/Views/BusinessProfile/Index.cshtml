@@ -1,0 +1,128 @@
+﻿@*using IS.Infrastructure.Extensions*@
+@model IS.Web.ViewModels.BusinessProfileViewModels.BusinessProfileViewModel
+@{
+    ViewBag.Title = "Профил";
+    var Services = Model.Services.ToList();
+    var Branches = Model.Branches.ToList();
+}
+
+<div class="container">
+    <div class="row" id="back">
+        @Styles.Render("~/Content/businessProfile.css")
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@Model.FirmName</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            @{ var base64 = Convert.ToBase64String(Model.Image);
+                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                <img alt="User Pic" src=@imgSrc class="img-circle img-responsive"> }
+                        </div>
+
+                        <div class="col-md-9 col-lg-9">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Име:</td>
+                                        <td>@Model.FirmName</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td>Имейл</td>
+                                        <td>@Model.Email</td>
+                                    </tr>
+
+                                    <tr>
+                                    <tr>
+                                        <td>Телефон</td>
+                                        <td>@Model.Telephone</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Вид на фирмата</td>
+                                        <td>@Model.Type</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>Булстат</td>
+                                        <td>@Model.Bulstat</td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+@{
+    if (Model.Branches.Count() != 0)
+    {
+        for (int i = 0; i < Model.Branches.Count(); i++)
+        {
+            <p>@Branches[i].Town</p>
+                                <hr />
+                                <p>@Branches[i].Address</p>
+                                <br />
+                                @Html.ActionLink("Премахване на клон", "DeleteBranch", "Branch", new { id = Branches[i].Id }, new { @class = "btn btn-default btn-sm" })
+        }
+    }
+    else
+    {
+        <p>Не сте добавили клонове на фирмата.</p>
+        }
+    }
+   
+        @Html.ActionLink("Добавяне на клон", "AddBranch", "Branch", routeValues: null, htmlAttributes: new { @class = "btn btn-default btn-sm" })
+   
+                                        </td>
+                                        </tr>
+
+
+                                    <tr>
+                                        <td>@Html.LabelFor(m => m.Services, new { @class = "col-md-10 control-label", @style="font-size: 20px !important;" })</td>
+                                        <td></td>
+                                        </tr><tr>
+                                        <td class="servicelist">
+                                            @{
+                                            if (Model.Services.Count() != 0)
+                                            {
+                                                for (int i = 0; i < Model.Services.Count(); i++)
+                                                {
+                                                    @Html.HiddenFor(s => Services[i].Id);
+                                                    <h4>@Services[i].Type</h4>
+                                                    
+                                                    <p>@Services[i].Description</p>
+                                                    <br />
+                                                    @Html.ActionLink("Премахване на услуга", "DeleteService", "Service", new { id = Services[i].Id }, new { @class = "btn btn-default btn-sm" })
+                                                        <hr />
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                <span>Не сте въвели услуги.</span>
+                                            }
+                                            
+                                                @Html.ActionLink("Добавяне на услуга", "AddService", "Service", routeValues: null, htmlAttributes: new { @class = "btn btn-default btn-sm" })
+                                            
+                                        }
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    @Html.ActionLink("Редактиране", "Edit", "BusinessProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-danger" })
+                                    @Html.ActionLink("Изтриване", "Delete", "BusinessProfile", routeValues: null, htmlAttributes: new { @class = "btn btn-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,58 @@
+﻿#loginForm, #socialLoginForm {
+display: flex;
+flex-direction: column;
+justify-content:center;
+align-items:center;
+}
+#socialLoginList {
+display: flex;
+flex-direction: column;
+justify-content:center;
+align-items:center;
+}
+.form-group {
+text-align: center;
+}
+.checkbox {
+display: inline-block;
+vertical-align: middle;
+}
+input[type=submit] {
+width: 100%;
+
+}
+#Facebook {
+    background: url('https://www.northcarolina.edu/sites/default/files/facebook_icon_2013.jpg') center center;
+    align-items: center;
+	align-self: center;
+    border: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 50px;
+    height: 50px;
+    background-size: cover;                    
+    background-repeat: no-repeat;
+    margin: 1px;
+}
+#Google {
+background: url('http://cdn5.marketexclusive.com/wp-content/uploads/2016/01/Google-login.png') center center;
+    align-items: center;
+	align-self: center;
+	display: flex;
+    border: 0;
+	flex-direction: column;
+	justify-content: center;
+	width: 50px;
+    height:50px;
+    background-size: cover;                    
+    background-repeat: no-repeat;
+    margin: 1px;
+}
+.regButt:active, .regButt, regButt:hover {
+    color:#000000;
+    font-weight: bold;
+    width: 100%;
+    text-decoration: none;
+}
+

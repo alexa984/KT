@@ -1,0 +1,113 @@
+﻿@using System.Linq
+@using IS.Infrastructure.Extensions
+@using IS.Infrastructure.Enumerations
+@model List<IS.Data.Models.Service>
+@{
+    ViewBag.Title = "Услуги";
+    Styles.Render("~/Content/services.css");
+
+    var services = from s in Model
+                   select s;
+}
+
+<br>
+<div class="kompot-content">
+
+    <br>
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <br>
+                <ul class="list-group" id="side-menu">
+                    <li class="list-group-item" id="all"><span class="badge">@Model.Count()</span>Всички услуги</li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Административни).Count()</span>
+                        Административни услуги
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Кетъринг).Count()</span>
+                        Кетъринг
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Монтьорски).Count()</span>
+                        Монтьорски услуги
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Селскостопански).Count()</span>
+                        Селскостопански услуги
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Софтуер).Count()</span>
+                        Софтуер
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Социални).Count()</span>
+                        Софиални услуги
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Строителство).Count()</span>
+                        Строителство
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Медицински).Count()</span>
+                        Медицински
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Транспорт).Count()</span>
+                        Транспорт
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.Where(s => s.Type == ServiceType.Други).Count()</span>
+                        Други услуги
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-9" id="content">
+                <h3>Обяви</h3>
+                <hr>
+                <div id="search">
+                    @using (Html.BeginForm("Index", "Service", FormMethod.Get, new { id = "frmsearch", @class = "form-horizontal", role = "form" }))
+                    {
+                        <input id="search-field" name="searchString" style="width:300px;" />
+                        <input class="btn-default" name="submit" type="submit" style="font-weight:bold;" value="Търси" />
+                    }
+
+                </div>
+                <br />
+
+
+                @{
+                    if (Model == null)
+                    {
+                        <div class="col-md-3">
+                            <div class="text-center">
+                                Не са добавени услуги.
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        foreach (var service in Model)
+                        {
+
+                            <div class="col-md-4" id="announcement">
+                                <img src="~/Content/Images/meeting.png" class="img-responsive" />
+                                <div class="text-center">
+                                    @{ var Type = EnumHelper<ServiceType>.GetDisplayValue(service.Type); }
+                                    @Html.ActionLink(Type + " - " + service.Firm.FirmName, "ViewService", "Service", new { id = service.Id }, new { })
+                                </div>
+                                <p class="text-center">@service.Description</p>
+                            </div>
+                                            }
+
+                                        }
+                }
+
+            </div>
+        </div>
+    </div>
+
+

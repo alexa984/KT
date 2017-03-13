@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated && User.Identity.IsAuthenticated && User.IsInRole("User"))
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right"}))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li>
+                    @Html.ActionLink("Здравей, " + User.Identity.GetUserName() + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Управление" })
+                
+            </li>
+            <li>
+               
+                    @Html.ActionLink("Профил", "Index", "Profile", routeValues: null, htmlAttributes: new { title = "Профил" })
+               
+            </li>
+            <li>
+               
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Излез</a>
+                
+            </li>
+
+        </ul>
+    }
+}

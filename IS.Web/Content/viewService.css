@@ -1,0 +1,52 @@
+﻿.profileimg {
+width:28%;
+height:28%;
+display:block;
+padding:6px;
+justify-content:center;
+}
+#provider {
+display:flex;
+align-content:center;
+float:right;
+}
+.flt-right {
+display:flex;
+justify-content:center;
+}
+
+#likeButt {
+width:30px;
+height:30px;
+
+}
+pre {
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 18px !important;
+    background-color: #FFFFFF !important;
+    border: 0 !important;
+
+}
+#cmnt {
+display:flex;
+flex-direction:row;
+justify-content:flex-start;
+}
+
+#comment-input {
+height:80px;
+width:800px !important;
+border-radius:1px;
+margin-left:20px !important;
+word-break: break-word !important;
+
+}
+.marginous {
+margin:6px !important;
+}
+#likelink, #likelink:hover {
+    color: #18aff9;
+
+}
+

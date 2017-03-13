@@ -1,0 +1,66 @@
+﻿@model IS.Data.Contracts.ISData
+@{
+    ViewBag.Title = "Home Page";
+   
+}
+
+<body>
+    @Styles.Render("~/Content/ISStyle.css")
+    <div class="container">
+
+        <div class="jumbotron">
+            
+            <p class="lead">
+                Имате бизнес или предлагате извършването на различни дейности? <br>
+                Не искате да пускате повече обяви по вестниците?<br />
+                Или пък ви трябва водороводчик или детегледачка и не знаете към кого да се обърнете?
+            </p>
+            <h3>Тук сме за ваше улеснение!</h3>
+            <p>
+                <div class="btn btn-lg btn-default" role="button">
+                    @Html.ActionLink("Разгледай услугите ни", "Index", "Service", routeValues: null, htmlAttributes: "text-decoratin:none; color:#000;")
+                </div>
+            </p>
+        </div>
+
+        @*<div class="row marketing">    Later on....
+            <div class="col-lg-5">
+                <h4>Последно добавени услуги:</h4>
+                <hr>
+                <div class="announce panel">
+                
+                    <img class="img-circle img-responsive" src="http://vinotrentino.dev.memetic.it/Images/default.jpg" alt="terakot"/>
+                    @Html.ActionLink("Terakot", "", "Service", routeValues: null, htmlAttributes: null)
+                    <p> 20.00 лв</p>
+                </div>
+                <div class="announce panel-group">
+                    <img class="img-circle img-responsive" src="http://vinotrentino.dev.memetic.it/Images/default.jpg" alt="zubolekar" />
+                    @Html.ActionLink("Zubolekar", "", "Service", routeValues: null, htmlAttributes: null)
+                    <p> 20.00 лв</p>
+                </div>
+                <div class="announce panel-group">
+                    <img class="img-circle img-responsive" src="http://vinotrentino.dev.memetic.it/Images/default.jpg" alt="avtomontior" />
+                    @Html.ActionLink("Avtomontior", "", "Service", routeValues: null, htmlAttributes: null)
+                    <p> 20.00 лв</p>
+                </div>
+                <div class="announce panel-group">
+                    <img class="img-circle img-responsive" src="http://vinotrentino.dev.memetic.it/Images/default.jpg" alt="kasapluk" />
+                    @Html.ActionLink("Kasapluk", "", "Service", routeValues: null, htmlAttributes: null)
+                    <p> 20.00 лв</p>
+                </div>            
+   
+                </div>
+
+            <div class="col-lg-2"></div>
+            <div class="col-lg-5">
+                <h4>Последно търсени:</h4>
+                <hr>
+                
+            </div>
+        </div>*@
+      </div>
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+</body>
+

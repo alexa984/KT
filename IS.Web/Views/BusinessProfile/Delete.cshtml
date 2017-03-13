@@ -1,0 +1,24 @@
+﻿@model IS.Web.ViewModels.BusinessProfileViewModels.BusinessProfileViewModel
+@{
+    ViewBag.Title = "Изтриване";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-md-8">
+        <p>Сигурни ли сте, че искате да изтриете профила си?</p>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @Html.ActionLink("Връщане към началната страница", "Index", "Home", routeValues: null, htmlAttributes: new { @class = "btn btn-default" })
+
+                    <input type="submit" class="btn btn-danger" value="Изтриване" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

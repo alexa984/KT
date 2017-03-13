@@ -1,0 +1,92 @@
+﻿@using IS.Infrastructure.Extensions
+@using IS.Infrastructure.Enumerations
+@using IS.Web.ViewModels.CommentViewModels;
+@using IS.Data.Models;
+@model IS.Web.ViewModels.ServiceViewModels.ServiceViewModel
+@{
+    ViewBag.Title = "Преглед";
+    Styles.Render("~/Content/services.css");
+}
+<div class="container">
+    @Styles.Render("~/Content/viewService.css")
+    <div class="jumbotron">
+        <h2>@ViewBag.Title</h2>
+    </div>
+    <div class="row marketing">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="~/Content/Images/meeting.png" class="img-responsive" alt="default" />
+                    <br>
+                    @{ var Type = EnumHelper<ServiceType>.GetDisplayValue(Model.Type);
+                        <p>Вид: @Type</p>
+                    }
+                    <p>Описание: @Model.Description</p>
+                    <p>Дата на добавяне: @Model.CreatedOn</p>
+                    <br>
+                    @Scripts.Render("~/Scripts/likeScript.js")
+                    <a href="@Url.Action()" id="likelink" onclick="like()"> <img src="~/Content/Images/like.svg" id="likeButt" alt="Home" /> Харесвам ( <span id="likeCount">0</span> )</a>
+                </div>
+                <div class="col-md-6" id="provider">
+
+                    <div class="row">
+                        <div class="col flt-right"><p class="flt-right">Добавено от: </p></div>
+                        <div class="w-100"></div>
+                        <div class="col flt-right">
+                            @{ var base64 = Convert.ToBase64String(Model.Firm.Image);
+                                var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                                <img src="@imgSrc" class="img-responsive profileimg flt-right" alt="profile" /> }
+                        </div>
+
+                        <div class="w-100"></div>
+
+                        <div class="col flt-right">@Model.Firm.FirmName </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <hr>
+                <br>
+                <div class="col-sm-12">
+                    <h3>Коментари</h3>
+                    <br>
+                </div><!-- /col-sm-12 -->
+            </div><!-- /row -->
+            <br />
+
+            <div class="row" id="cmnt">
+                <div class="col-12">
+                
+                    <input id="comment-input" type="text" placeholder="Въведете коментар" />
+                    <input type="submit" name="Publish" value="Публикувай" class="btn-default marginous">
+                    
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-sm-1">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="~/Content/Images/Default-Profile.jpg">
+                    </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>Алекс</strong>
+                            <span class="text-muted"> (07/03/2017) </span>
+                        </div>
+                        <div class="panel-body">
+                            Много добри!
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@Scripts.Render()
