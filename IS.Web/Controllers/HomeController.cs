@@ -5,8 +5,10 @@ namespace IS.Web.Controllers
     using Data;
     using Data.Contracts;
     using System.Web.Mvc;
+    using IS.Web.CustomHttps;
 
-    [RequireHttps]
+    [CustomHttps]
+
     public class HomeController : BaseController
     {
         public ActionResult Welcome()
